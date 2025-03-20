@@ -15,6 +15,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import { useLocation, Link, useNavigate, Link as RouterLink } from "react-router-dom";
+import logo from "./Bi/favicon.ico"; 
 
 const Nnav = () => {
   const theme = useTheme();
@@ -50,21 +51,15 @@ const Nnav = () => {
         boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         {/* Logo or Brand Name */}
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            flexGrow: 1,
-            fontWeight: "bold",
-            fontFamily: "'Poppins', sans-serif",
-            color: "white",
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          Feel The Care
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <img 
+            src={logo} // Use the imported logo here
+            alt="Logo"
+            style={{ width: "40px", height: "40px" }} // Adjust the size as needed
+          />
+        </Box>
 
         {/* Desktop Navigation Links */}
         {!isMobile && (

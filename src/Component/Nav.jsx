@@ -13,7 +13,7 @@ import {
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Import the AccountCircle icon
-
+import logo from "./Bi/favicon.ico"; 
 
 const Nav = () => {
   const location = useLocation();
@@ -67,57 +67,58 @@ const Nav = () => {
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Toolbar>
-          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: "24px",
-                fontWeight: "bold",
-                color: "white",
-                fontFamily: "Roboto, Arial, sans-serif",
-              }}
-            >
-              Feel The Care
-            </Typography>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          {/* Logo */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <img 
+              src={logo} // Use the imported logo here
+              alt="Logo"
+              style={{ width: "40px", height: "40px" }} // Adjust the size as needed
+            />
           </Box>
 
-        
+          {/* Breadcrumbs (if needed) */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Breadcrumbs sx={{ color: "white" }}>
+              {breadcrumbs}
+            </Breadcrumbs>
+          </Box>
 
-          {/* Home Icon */}
-          <IconButton>
-            <RouterLink to="/home" style={{ textDecoration: "none", color: "white" }}>
-              <HomeIcon sx={{ fontSize: 30, color: "white" }} />
-            </RouterLink>
-          </IconButton>
-
-          {/* User Icon */}
-          <IconButton onClick={handleMenuOpen}>
-            <AccountCircleIcon sx={{ fontSize: 30, color: "white" }} />
-          </IconButton>
-
-          {/* Menu for Profile and Login */}
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-            sx={{ "& .MuiMenu-paper": { backgroundColor: "#333", color: "white" } }}
-          >
-            <MenuItem onClick={handleMenuClose}>
-              <RouterLink to="/profile" style={{ textDecoration: "none", color: "white" }}>
-                Profile
+          {/* Right Side Icons */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            {/* Home Icon */}
+            <IconButton>
+              <RouterLink to="/home" style={{ textDecoration: "none", color: "white" }}>
+                <HomeIcon sx={{ fontSize: 30, color: "white" }} />
               </RouterLink>
-            </MenuItem>
-            <MenuItem onClick={handleMenuClose}>
-              <RouterLink to="/login" style={{ textDecoration: "none", color: "white" }}>
-                Login
-              </RouterLink>
-            </MenuItem>
-          </Menu>
+            </IconButton>
+
+            {/* User Icon */}
+            <IconButton onClick={handleMenuOpen}>
+              <AccountCircleIcon sx={{ fontSize: 30, color: "white" }} />
+            </IconButton>
+
+            {/* Menu for Profile and Login */}
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              sx={{ "& .MuiMenu-paper": { backgroundColor: "#333", color: "white" } }}
+            >
+              <MenuItem onClick={handleMenuClose}>
+                <RouterLink to="/profile" style={{ textDecoration: "none", color: "white" }}>
+                  Profile
+                </RouterLink>
+              </MenuItem>
+              <MenuItem onClick={handleMenuClose}>
+                <RouterLink to="/login" style={{ textDecoration: "none", color: "white" }}>
+                  Login
+                </RouterLink>
+              </MenuItem>
+            </Menu>
+          </Box>
         </Toolbar>
       </AppBar>
-
-      
     </div>
   );
 };

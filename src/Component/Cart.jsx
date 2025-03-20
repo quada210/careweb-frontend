@@ -28,9 +28,6 @@ const Cart = () => {
     alternatePhone: ''
   });
 
-
-  
-
   // Fetch cart items on component mount
   useEffect(() => {
     axios.get("http://localhost:4040/getcart")
@@ -137,7 +134,7 @@ const Cart = () => {
       {/* Cart Items */}
       <Grid container spacing={3} sx={{ p: 3 }}>
         {user.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id || index}>
+          <Grid item xs={12} sm={6} md={2.4} key={item.id || index}>
             <Card sx={{ boxShadow: 3, borderRadius: '10px' }}>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
